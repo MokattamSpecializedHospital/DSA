@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoCaption Pro</title>
+    <style>
+        :root {
+            --bg-color: #232323;
+            --panel-bg: #1e1e1e;
+            --text-color: #d8d8d8;
+            --accent: #2d8ceb;
+            --accent-hover: #1e70c4;
+            --border: #3a3a3a;
+        }
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 15px;
+            font-size: 13px;
+        }
+        .header {
+            text-align: center;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 15px;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 18px;
+            color: #fff;
+        }
+        .header span { color: var(--accent); }
+        .section {
+            background-color: var(--panel-bg);
+            padding: 15px;
+            border-radius: 6px;
+            border: 1px solid var(--border);
+            margin-bottom: 15px;
+        }
+        .form-group {
+            margin-bottom: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        label { font-weight: 600; }
+        input[type="number"], input[type="color"] {
+            background-color: #1a1a1a;
+            border: 1px solid var(--border);
+            color: #fff;
+            padding: 5px;
+            border-radius: 4px;
+            width: 70px;
+            text-align: center;
+        }
+        input[type="color"] {
+            padding: 0;
+            width: 30px;
+            height: 25px;
+            cursor: pointer;
+        }
+        input[type="file"] {
+            display: none;
+        }
+        .file-btn, .action-btn {
+            display: block;
+            width: 100%;
+            background-color: #383838;
+            color: #fff;
+            border: 1px solid var(--border);
+            padding: 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            text-align: center;
+            font-weight: 600;
+            transition: 0.2s;
+            box-sizing: border-box;
+        }
+        .file-btn:hover { background-color: #444; }
+        .action-btn {
+            background-color: var(--accent);
+            border: none;
+            margin-top: 10px;
+            font-size: 14px;
+            padding: 12px;
+        }
+        .action-btn:hover { background-color: var(--accent-hover); }
+        .info-box {
+            background-color: rgba(45, 140, 235, 0.1);
+            border-right: 3px solid var(--accent);
+            padding: 10px;
+            font-size: 11px;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+        #status {
+            text-align: center;
+            font-weight: bold;
+            margin-top: 10px;
+            min-height: 15px;
+        }
+        .footer {
+            text-align: center;
+            font-size: 10px;
+            color: #888;
+            margin-top: 20px;
+            border-top: 1px solid var(--border);
+            padding-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>AutoCaption <span>Pro</span></h1>
+        <div style="font-size: 10px; color: #888; margin-top: 5px;">MOGRT Caption Engine</div>
+    </div>
+
+    <div class="info-box">
+        <strong>خطوة هامة جداً:</strong><br>
+        أضف طبقة نص (Text Graphic) واحدة للتايملاين، اختر الخط واللون واضبطها على اللغة العربية. <b>قم بتحديدها (Select)</b> لتكون القالب، ثم اضغط توليد.
+    </div>
+
+    <div class="section">
+        <label>1. ملف الترجمة (SRT / VTT)</label>
+        <label for="fileInput" class="file-btn" id="fileLabel" style="margin-top: 8px;">📁 اختر الملف</label>
+        <input type="file" id="fileInput" accept=".srt,.vtt">
+    </div>
+
+    <div class="section">
+        <div class="form-group">
+            <label>لون النص</label>
+            <input type="color" id="textColor" value="#ffffff">
+        </div>
+        <div class="form-group">
+            <label>حجم الخط</label>
+            <input type="number" id="fontSize" value="55" min="10" max="200">
+        </div>
+        <div class="form-group">
+            <label>الارتفاع العمودي (Y %)</label>
+            <input type="number" id="posY" value="75" min="0" max="100">
+        </div>
+        <div class="form-group">
+            <label>كلمات بكل مقطع</label>
+            <input type="number" id="chunkSize" value="3" min="1" max="10">
+        </div>
+    </div>
+
+    <button class="action-btn" id="generateBtn">🚀 توليد الكابشن على التايملاين</button>
+    <div id="status"></div>
+
+    <div class="footer">
+        <b>Abanoub Lotfy Nakhil</b><br>
+        abanoublotfy@gmail.com | 01000980037
+    </div>
+
+    <!-- Script -->
+    <script src="./js/main.js"></script>
+</body>
+</html>
